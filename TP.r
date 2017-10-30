@@ -1,6 +1,6 @@
 #Trabajo Práctico Probabilidad y Estadística (c)#
 #Segundo Cuatrimestre 2017#
-# Luis Greco, Nicolas Hertzulis#
+# Luis Greco - Nicolas Hertzulis - Ruslan Sobol#
 
 #Fijo la "semilla" para que no nos de cosas distintos resultados cada vez que experimentamos
 set.seed(1109)
