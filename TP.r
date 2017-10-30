@@ -27,7 +27,17 @@ for (j in 1:3000){
   set.seed(1109)
   z[j] <- Generar.exponenciales_devolviendo_media(j, 3)
 }
+
+#Y si hago así?
+z <- seq(length = 3000)
+z <- rexp(3000, rate = 3)
+#Digo, no estaría usando un for
 plot(y)
 plot(z)
+#Ver los graficos bizarros que me da
 
 #Ejercicio 2
+x1 <- rexp(1, rate = 3)
+x2 <- rexp(1, rate = 3)
+
+
