@@ -35,20 +35,76 @@ plot(z)
 
 #Ejercicio 2
 #2 a)
-medias <- seq(length=1000)
+mediasA <- seq(length=1000)
 for (j in 1:1000){
 x1 <- rexp(1, rate = 3)
 x2 <- rexp(1, rate = 3)
-medias[j] <- (x1+x2)/2
+mediasA[j] <- (x1+x2)/2
 }
 #Histograma
-hist(medias)
+hist(mediasA)
 
 #Boxplot
-boxplot(medias)
+boxplot(mediasA)
 
 #Q-Q Plot
-qqnorm(medias)
-qqline(medias)#La cola del plot
+qqnorm(mediasA)
+qqline(mediasA)#La cola del plot
 
+# Punto b)
+
+mediasB <- seq(length = 1000)
+
+for (i in 1:1000){
+a <- c(rexp(1, rate = 3), rexp(1, rate = 3), rexp(1, rate = 3), rexp(1, rate = 3), rexp(1, rate = 3))
+mediasB[i] = mean(a)
+}
+#Histograma
+hist(mediasB)
+
+#Boxplot
+boxplot(mediasB)
+
+#Q-Q Plot
+qqnorm(mediasB)
+qqline(mediasB)#La cola del plot
+
+
+#Punto C
+mediasC1 <- seq(length = 1000) #Acá van con n=30
+mediasC2 <-seq(length = 1000) #Acá van con n=500
+
+a <- seq(length = 1000)
+b <- seq(length = 1000)
+
+for (j in 1:1000){
+  a <- rexp(30, 3)
+  b <- rexp(500, 3)
+  mediasC1[j] = mean(a)
+  mediasC2[j] = mean(b)
+}
+
+#Histograma
+hist(mediasC1)
+hist(mediasC2)
+
+#Boxplot
+boxplot(mediasC1)
+boxplot(mediasC2)
+
+#Q-Q Plot
+qqnorm(mediasC1)
+qqline(mediasC1)#La cola del plot
+
+qqnorm(mediasC2)
+qqline(mediasC2)
+
+#Punto D
+c <- rnorm(1000, 0, 1)
+hist(c)
+boxplot(c)
+qqnorm(c)
+qqline(c)
+
+#Punto E
 

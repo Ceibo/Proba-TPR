@@ -1,0 +1,342 @@
+---
+title: "Informe Brignolo - Greco - Hertzulis"
+date: "27 de Junio 2017"
+output: pdf_document
+---
+
+#Ejercicio 1
+
+
+```{r, eval=TRUE, echo=TRUE}
+u <- function(n,b) (runif(n, 0 , b))
+```
+
+Lo guardo en "u" para tener algo a lo que calcularle los estimadores
+
+```{r, eval=TRUE, echo=TRUE}
+UniformeEM <- function(u) (mean(u)*2)
+
+UniformeEMV <- function(u) (max(u))
+```
+
+
+#Ejercicio 2
+
+```{r, eval=TRUE, echo=TRUE}
+bMed <- function(u) (2*median(u))
+```
+
+Obviamente para llamar a la función de este estimador tengo que tener definida u previamente.
+
+
+#Ejercicio 3
+
+```{r, eval=TRUE, echo=TRUE}
+x <- runif(15, 0, 1)
+```
+
+Genero una muestra de una uniforme con los parametros de la consigna y los guardo en "x"
+
+```ECM del EM = (UniformeEM(x) -1)^2```
+```ECM del EMV = (UnifomreEMV(x) -1)^2```
+```ECM del MED = (bmed(x) -1)^2```
+```UniformeEM(x) = ```
+
+```UniformeEMV(x) = ```
+
+```bMed(x) =```
+
+
+
+#Ejercicio 4
+
+#a)
+
+```{r, eval=TRUE, echo=TRUE}
+x <- runif(15, 0, 1)
+```
+
+#b)
+
+```{r, eval=TRUE, echo=TRUE}
+bmv15 = UniformeEMV(x)
+
+
+bmom15 = UniformeEM(x)
+
+
+bMed15 = bMed(x)
+```
+
+se almacenan los resultados? 
+
+#c)
+```{r, eval=TRUE, echo=TRUE}
+Uniforme1000 <- rep(runif(15, 0, 1), 1000)
+
+bmom1000 <- 1:1000
+
+
+bmv1000 <- 1:1000
+
+bMed1000 <- 1:1000
+
+muestra <- runif(15, 0, 1)
+
+  for (i in 1:1000){
+    bmom1000[i] = UniformeEMV(muestra)
+    
+    bmv1000[i] = UniformeEM(muestra)
+    
+   bMed1000[i] = bMed (muestra)
+   }
+```
+
+#d)
+```{r, eval=TRUE, echo=TRUE}
+sesgobmom = mean(bmom1000) - 1
+
+sesgobmv = mean(bmv1000) - 1
+
+sesgobMed = mean(bMed1000) - 1
+```
+
+#e)
+```{r, eval=TRUE, echo=TRUE}
+varbmom = var(bmom1000)
+
+varbmv = var(bmv1000)
+
+varbmed = var(bMed1000)
+```
+
+#f)
+Acá aplicamos la propiedad que nos decía que:
+  ECM(x) = Var(x) + sesgo(x)^2
+
+```{r, eval=TRUE, echo=TRUE}
+ECMbmom = varbmom + sesgobmom^2
+
+ECMbmv = varbmv + sesgobmv^2
+
+ECMbMed = varbmed + sesgobMed^2
+```
+
+
+
+#Ejercicio 5
+
+```{r, eval=TRUE, echo=TRUE}
+simulacion_mv <- function(n,b) {
+
+  mv_a <- 1:1000
+  
+  for (i in 1:1000){
+    
+    a <- runif(n, 0, b)
+
+  
+    mv_a[i] = UniformeEMV(a)
+    
+}
+
+  
+  sesgo_mv = mean(mv_a) - b 
+  
+var_mv= var(mv_a)
+
+ECM_mv = var_mv + sesgo_mv^2
+
+return (ECM_mv)
+
+}
+```
+
+
+
+```{r, eval=TRUE, echo=TRUE}
+simulacion_mom <- function(n,b) {
+
+  mom_a <- 1:1000
+
+  for (i in 1:1000){
+    
+    a <- runif(n, 0, b)
+
+
+    mom_a[i] = UniformeEM(a)
+
+  }
+
+  sesgo_mom = mean(mom_a) - b
+
+  var_mom = var(mom_a)
+
+  ECM_mom = var_mom + sesgo_mom^2
+ 
+ return (ECM_mom)
+
+}
+```
+
+
+
+```{r, eval=TRUE, echo=TRUE}
+simulacion_med <- function(n,b) {
+
+
+  med_a <- 1:1000
+
+  for (i in 1:1000){
+    
+    a <- runif(n, 0, b)
+
+    
+    med_a[i] = bMed(a)
+    
+  }
+  
+  sesgo_med = mean(med_a) - b
+  
+  var_med = var(med_a)
+  
+  ECM_med = var_med + sesgo_med^2
+  
+  return (ECM_med)
+  
+}
+```
+
+
+
+#Ejercicio 6:
+
+```{r, eval=TRUE, echo=TRUE}
+i = 1
+gmv = c()
+gmom = c()
+gmed = c()
+valoresDeB = c()
+b = 0.5
+while(b <= 2){
+  gmv[i] <- simulacion_mv(15,b)
+  gmom[i] <- simulacion_mom(15,b)
+  gmed[i] <- simulacion_med(15,b)
+  valoresDeB[i] <- b
+  i = i +1
+  b = b + 0.01
+}
+plot(valoresDeB, gmom, col='red', ylim = c(0, 0.4))
+points(valoresDeB, gmed, col='brown')
+points(valoresDeB, gmv, col='blue')
+```
+
+Conclusión:
+Todos los estimadores son funciónes crecientes, podemos observar que el estimador Bmed es el que más rapido crece, seguido por el estimador de momentos y finalmente el de máxima verosimilitud.
+Entendemos que para que un estimador sea mejor, a mayor valor de "b", el error debe ser "chico", en este caso el mejor es el estimador de máxima verosimilitud.
+
+
+#Ejercicio 7:
+
+```{r, eval=TRUE, echo=TRUE}
+i = 1
+gmv = c()
+gmom = c()
+gmed = c()
+valoresDeN = c(15, 30, 50, 100, 150, 200)
+b = 1
+while(i <= 6){
+gmv[i] <- simulacion_mv(valoresDeN[i],b)
+  gmom[i] <- simulacion_mom(valoresDeN[i],b)
+  gmed[i] <- simulacion_med(valoresDeN[i],b)
+  i = i +1
+}
+
+plot(valoresDeN, gmed, col='red', ylim= c(0, 0.08))
+
+points(valoresDeN, gmom, col='brown')
+
+points(valoresDeN, gmv, col='blue')
+```
+
+Conclusión:
+Son funciones decrecientes, en este caso nuestro "b" está fijo, y lo que varía es el tamaño de la muestra. Cuando esta es pequeña, observamos que los ECM de los estimadores son "grandes" y a medida que aumentamos el tamaño de la muestra, este error se va achicando.
+Nuevamente, vamos a elegir el estimador cuyo ECM sea menor, en este caso el estimador de máxima verosimilitud es el menor de todos para todos los valores de "n" observados, así que elegimos ese estimador.
+
+En cuanto a la consistencia de los estimadores, a madida que vamos aumentando el tamaño de la muestra vamos acercandonos cada vez más al cero, luego la varianza y el sesgo, tienen a cero a medida que "n" crece, y al achicarse el sesgo implica que el estimador se va pareciendo cada vez más a la esperanza de la distribución U[0, b], y eso significa que es consistente.
+Nuestros estimadores son todos consistentes, aun que no todos en igual medida, el de máxima verosimilitud es el más consistente de todos.
+
+
+
+
+#Ejercicio 8:
+
+```{r, eval=TRUE, echo=TRUE}
+muestraPunto8 = c(0.917, 0.247, 0.384, 0.530, 0.798, 0.912, 0.096, 0.684, 0.394, 20.1, 0.769, 0.137, 0.352, 0.332, 0.670)
+
+bmvMuestraPunto8 = UniformeEMV (muestraPunto8)
+
+bmomMuestraPunto8 = UniformeEM (muestraPunto8)
+
+bMedMuestraPunto8 = bMed (muestraPunto8)
+
+bmvMuestraPunto8 = 20.1
+
+bmomMuestraPunto8 = 3.642933
+
+bMedMuestraPunto8 = 1.06
+```
+
+Conclusión:
+Obvervsmos que los estimadores son inusualmente altos en comparación con los que veniamos trabajando en los ejercicios anteriores.
+Esto se debe a los valores de la muestra y la forma de calcular cada estimador, digamos, el de maxima verosimilitud toma el máximo, que en este caso se encuentra muy lejos del promedio de la muestra, el de momentos trabaja con el promedio y ese valor singular de la muestra aumenta significativament el promedio de la misma al tratarse de una muestra chica, en estos ambos casos los estimadores se vieron afectados solamente por un valor, lo que los hace poco robustos, al menos para una muestra de este tamaño.
+Por otro lado, el med toma la mediana resultó ser un poco más robusto que los otros dos, aun que tampoco tanto, vemos que en este caso es difícil tener un buen estimador cuando trabajamos con una muestra con estas caracteristicas.
+
+
+#Ejercicio 9:
+
+```{r, eval=TRUE, echo=TRUE}
+n = 15
+b = 1
+
+
+simulacion_9 <- function(b,n){
+  
+  mom = c()
+  mv = c()
+  med = c ()
+ 
+for (i in 1:1000){
+
+    y <- runif(n ,0 ,b)
+
+    multiplicar = sample(c(100,1),1,prob=c(0.05, .095))
+
+    y[1] = y[1] * multiplicar
+
+    mom[i] <- UniformeEM(y)
+
+    mv[i] <- UniformeEMV(y)
+
+    med[i] <- bMed(y)
+
+  }
+
+sesgo_mom = mean(mom) - 1
+sesgo_mv = mean(mv) - 1
+sesgo_med = mean(med) - 1
+
+var_mom = var(mom)
+var_mv = var(mv)
+var_med = var(med)
+
+ECM_mom = var_mom + sesgo_mom^2
+ECM_mv = var_mv + sesgo_mv^2
+ECM_med = var_med + sesgo_med^2
+
+return(c(ECM_med,ECM_mv,ECM_mom))
+ 
+}
+```
+
+En este caso preferimos el estimador de la mediana, dado que toma un rango menor de valores y no se ve afectado por los casos más raros de la muestra, que modificaron significtivamente los valores de los otros estimadores.
