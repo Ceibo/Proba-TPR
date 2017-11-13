@@ -108,3 +108,52 @@ qqline(c)
 
 #Punto E
 
+
+#EJ 3
+
+#Punto a)
+mediaX1 <- mean(mediasA)
+varX1 <- var(mediasA)
+
+mediaX1
+varX1
+
+mediaX2 <- mean(mediasB)
+varX2 <- var(mediasB)
+
+mediaX3 <- mean(mediasC1)
+varX3 <- var(mediasC1)
+
+mediaX4 <- mean(mediasC2)
+varX4 <- var(mediasC2)
+
+#Punto b)
+
+#Transformación: (1/3 es la esperanza de la exp(3) )
+transformacionA <- (mediaX1 - (1/3))/(sqrt((1/9)/1000))
+transformacionA
+
+transformacionB <- (mediaX2 - (1/5))/(sqrt((1/25)/1000))
+transformacionB
+
+transformacionC1 <- (mediaX3 - (1/30))/(sqrt((1/900)/1000))
+transformacionC1
+
+transformacionC2 <- (mediaX3 - (1/500))/(sqrt((1/250000)/1000))
+transformacionC2
+
+#DE QUE ME PIDEN QUE HAGA LOS BOXPLOTS??? NO ME QUEDA CLARO
+boxplot(mediasA, mediasB, mediasC1, mediasC2)
+
+qqnorm(mediasA)
+qqline(mediasA)
+
+qqnorm(mediasB)
+qqline(mediasB)
+
+qqnorm(mediasC1)
+qqline(mediasC1)
+
+qqnorm(mediasC2)
+qqline(mediasC2)
+#Punto c)
