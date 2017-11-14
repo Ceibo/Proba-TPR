@@ -74,8 +74,8 @@ qqline(mediasB)#La cola del plot
 mediasC1 <- seq(length = 1000) #Acá van con n=30
 mediasC2 <-seq(length = 1000) #Acá van con n=500
 
-a <- seq(length = 1000)
-b <- seq(length = 1000)
+a <- seq(length = 30)
+b <- seq(length = 500)
 
 for (j in 1:1000){
   a <- rexp(30, 3)
@@ -156,4 +156,29 @@ qqline(mediasC1)
 
 qqnorm(mediasC2)
 qqline(mediasC2)
+
 #Punto c)
+hist(mediasA, freq = FALSE)
+curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
+
+
+hist(mediasB)
+curve(dnorm(x, mean(y), sd(y)), add=TRUE, col="darkblue", lwd=2)
+
+
+
+hist(mediasC1, freq = FALSE, col = "grey")
+curve(dnorm(x, mean(y), sd(y)), add=TRUE, col="darkblue", lwd=2)
+
+
+hist(mediasC2, freq = FALSE, col = "grey")
+x = mediasA
+curve(dnorm(x, mean(y), sd(y)), add=TRUE, col="darkblue", lwd=2)
+
+
+#Punto d) HACER
+
+#EJ 4
+x <- rnorm(1000)
+hist(x, freq = FALSE, col = "grey")
+curve(dnorm(x, 3, 2), col = 2, add = TRUE)
