@@ -55,6 +55,10 @@ boxplot(mediasA)
 qqnorm(mediasA)
 qqline(mediasA)#La cola del plot
 
+#Se observa tanto en el histograma hay una asimetria a la derecha.
+# En el Q-Q plot se observa una correcta simetria.
+# En el boxplot se observa que tiene la cola superior pesada, ademas de los visibles outliers
+
 # Punto b)
 
 mediasB <- seq(length = 1000)
@@ -73,6 +77,9 @@ boxplot(mediasB)
 qqnorm(mediasB)
 qqline(mediasB)#La cola del plot
 
+#se observa que el histograma empieza a tender a una distribucion normal
+#El boxplot hace notar mas las colas pesadas
+#y el Q-Q plot sigue manteniedo la correcta simetria, lo cual tiene a una normal.
 
 #Punto C
 mediasC1 <- seq(length = 1000) #Acá van con n=30
@@ -110,14 +117,18 @@ boxplot(c)
 qqnorm(c)
 qqline(c)
 
+#Se nota con muchas mas fuerza en el histograma la distribucion normal
+#Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia tender a la normal. Ahora con una gran seguridad podemos confirmar que tiene a una normal con muy pocos outliers
+#Y el Q-Qplot se aferra con mucha mas fuerza a una distribucion normal.
+
 #Punto E
 
 #boxplot
-boxplot(mediasA,mediasB,mediasC1,mediasC2)
-boxplot(mediasA)
-boxplot(mediasB)
-boxplot(mediasC1)
-boxplot(mediasC2)
+boxplot(mediasA,mediasB,mediasC1,mediasC2,c)
+
+#obsevamos que con mayor muestra se puede verificar su tendencia a una distribucion normal.
+#dado que en el punto a, presuponia que poseia colas pesadas, tendiendo a la cola superior, con bastantes ouliers, siendo que cada vez que aumentabamos las muestras estos outleirs disminuian y las colas pesadas tendian a desaparecer y tender cada vez mas a la normal.
+
 #EJ 3
 
 #Punto a)
