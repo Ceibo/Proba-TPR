@@ -32,6 +32,10 @@ for (j in 1:3000){
 plot(y,col="blue")
 plot(z,col="red")
 #Ver los graficos bizarros que me da
+#Explicacion
+# Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05)
+# En el plot de promedio, se obvserva como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
+# Se puede observar el comportamiento asintotico del promedio muestral.
 
 #Ejercicio 2
 #2 a)
