@@ -252,7 +252,7 @@ qqline(mediasA)#La cola del plot
 mediasB <- seq(length = 1000)
 
 for (i in 1:1000){
-  a <- c(rbinom(5,size=i, prob=1/9), rbinom(5,size=i, prob=1/9), rbinom(5,size=i, prob=1/9), rbinom(5,size=i, prob=1/9), rbinom(5,size=i, prob=1/9))
+  a <- c(rbinom(10,size=i, prob=1/9), rbinom(10,size=i, prob=1/9), rbinom(10,size=i, prob=1/9), rbinom(10,size=i, prob=1/9), rbinom(10,size=i, prob=1/9))
   mediasB[i] = mean(a)
 }
 #Histograma
@@ -340,7 +340,7 @@ varX4 <- var(mediasC2)
 transformacionA <- (mediaX1 - (5/9))/(sqrt((25/81)/1000))
 transformacionA
 
-transformacionB <- (mediaX2 - (5/9))/(sqrt((25/81)/1000))
+transformacionB <- (mediaX2 - (10/9))/(sqrt((100/81)/1000))
 transformacionB
 transformacionC1 <- (mediaX3 - (30/9))/(sqrt((900/81)/1000))
 transformacionC1
@@ -348,7 +348,7 @@ transformacionC1
 transformacionC2 <- (mediaX3 - (500/9))/(sqrt((250000/81)/1000))
 transformacionC2
 
-#DE QUE ME PIDEN QUE HAGA LOS BOXPLOTS??? NO ME QUEDA CLARO
+#
 boxplot(mediasA, mediasB, mediasC1, mediasC2)
 
 qqnorm(mediasA)
