@@ -1,6 +1,6 @@
 #Trabajo Práctico Probabilidad y Estadística (c)#
 #Segundo Cuatrimestre 2017#
-# Luis Greco - Nicolas Hertzulis - Ruslan Sobol#
+# Luis Greco - Nicolas Hertzulis - Ruslan Sanmartin Sobol#
 
 #Fijo la "semilla" para que no nos de cosas distintos resultados cada vez que experimentamos
 set.seed(1109)
@@ -29,8 +29,8 @@ for (j in 1:3000){
 }
 
 
-plot(y)
-plot(z)
+plot(y,col="blue")
+plot(z,col="red")
 #Ver los graficos bizarros que me da
 
 #Ejercicio 2
@@ -108,7 +108,12 @@ qqline(c)
 
 #Punto E
 
-
+#boxplot
+boxplot(mediasA,mediasB,mediasC1,mediasC2)
+boxplot(mediasA)
+boxplot(mediasB)
+boxplot(mediasC1)
+boxplot(mediasC2)
 #EJ 3
 
 #Punto a)
@@ -178,6 +183,9 @@ curve(dnorm(x, mean(y), sd(y)), add=TRUE, col="darkblue", lwd=2)
 
 #Punto d) HACER
 
+# Se observa en el histograma `mediasA` no tiene una buena aproximacion,dado a que sera necesaria una muestra mayor, dado que carece de simetria, lo cual no nos da informacion respecto a si tiene a una normal
+# Con respecto a los histogramas, `mediasB`, `mediasC1` y `mediasC2`, se puede observar como los graficos empiezan a represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria.
+# Aunque estaria bueno, poder agrander la muestra para el histograma `mediasB`, para que sea mas claro la forma de la campana, dado que en la muestra actual, la misma es minuscula.
 #EJ 4
 x <- rnorm(1000)
 hist(x, freq = FALSE, col = "grey")
