@@ -1,6 +1,6 @@
 Trabajo Práctico Probabilidad y Estadistica (c)
 Segundo Cuatrimestre 2017
-Luis Greco - Nicolas Hertzulis - Ruslan Sobol
+Luis Greco - Nicolas Hertzulis - Ruslan Sanmartin Sobol
 Fecha de entrega: 20/11/17
 
 Parametros:
