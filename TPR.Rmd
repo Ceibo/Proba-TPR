@@ -50,9 +50,8 @@ Este otro gráfico es el que hicimos con el set.seed() dentro de la función.
 ```{r, eval=TRUE, echo=TRUE}
 plot(z,col="red")
 ```
-Las diferencias que pudimos observar......COMPLETAR
-Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05)
-En el plot de promedio, se obvserva como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
+Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05).
+En el plot de promedio, se observa como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
 Se puede observar el comportamiento asintotico del promedio muestral.
 
 
@@ -84,8 +83,8 @@ qqnorm(mediasA)
 qqline(mediasA)#La cola del plot
 ```
 Se observa tanto en el histograma hay una asimetria a la derecha.
-En el Q-Q plot se observa una simetria de las colas livianas 
-En el boxplot se observa que tiene la cola superior pesada, ademas de los visibles outliers
+En el Q-Q plot se observa una simetria de las colas livianas.
+En el boxplot se observa que tiene la cola superior pesada, ademas de los visibles outliers.
 
 ##b)
 ```{r, eval=TRUE, echo=FALSE}
@@ -156,8 +155,8 @@ boxplot(c)
 qqnorm(c)
 qqline(c)
 ```
-Se nota con muchas mas fuerza en el histograma la distribucion normal
-Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia tender a la normal. Ahora con una gran seguridad podemos confirmar que tiene a una normal con muy pocos outliers
+Se nota con muchas mas fuerza en el histograma la distribucion normal.
+Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia tender a la normal. Ahora con una gran seguridad podemos confirmar que tiene a una normal con muy pocos outliers.
 Y el Q-Qplot se aferra con mucha mas fuerza a una distribucion normal.
 
 ##e)
@@ -274,7 +273,7 @@ curve(dnorm(x, mean=111, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
 ##d)
 
-Se observa en el histograma `mediasA` no tiene una buena aproximacion,dado a que sera necesaria una muestra mayor, dado que carece de simetria, lo cual no nos da informacion respecto a si tiene a una normal
+Se observa en el histograma `mediasA` no tiene una buena aproximacion,dado a que sera necesaria una muestra mayor, dado que carece de simetria, lo cual no nos da informacion respecto a si tiende a una normal.
 Con respecto a los histogramas, `mediasB`, `mediasC1` y `mediasC2`, se puede observar como los graficos empiezan a represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria.
 Aunque estaria bueno, poder agrander la muestra para el histograma `mediasB`, para que sea mas claro la forma de la campana, dado que en la muestra actual, la misma es minuscula.
 
@@ -298,8 +297,8 @@ plot(z,col="red")
 
 ##Punto 1
 Explicacion
-Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05)
-En el plot de promedio, se obvserva como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
+Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05).
+En el plot de promedio, se observa como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
 Se puede observar el comportamiento asintotico del promedio muestral.
 ##Punto 2
 ###a)
@@ -323,9 +322,9 @@ boxplot(mediasA)
 qqnorm(mediasA)
 qqline(mediasA)#La cola del plot
 ```
-Del histograma se obveserva simetria de las colas livianas 
-En el Q-Q plot se observa una simetria de las colas livianas .
-Se observa que el boxplot tiende a una normal 
+Del histograma se obveserva simetria de las colas livianas.
+En el Q-Q plot se observa una simetria de las colas livianas.
+Se observa que el boxplot tiende a una normal.
 
 ###b)
 ```{r, eval=TRUE, echo=FALSE}
@@ -347,8 +346,8 @@ boxplot(mediasB)
 qqnorm(mediasB)
 qqline(mediasB)#La cola del plot
 ```
-Se observa que el histograma simetria de las colas livianas es mas fuerte
-El boxplot es una "perfecta" normal y el Q-Q plot sigue manteniedo la  simetria de las colas livianas
+Se observa que el histograma simetria de las colas livianas es mas fuerte.
+El boxplot es una "perfecta" normal y el Q-Q plot sigue manteniedo la  simetria de las colas livianas.
 
 ###c)
 ```{r, eval=TRUE, echo=FALSE}
@@ -389,8 +388,8 @@ boxplot(c)
 qqnorm(c)
 qqline(c)
 ```
-Se nota con muchas mas fuerza en el histograma la distribucion normal
-Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia tender a la normal. Ahora con una gran seguridad podemos confirmar que tiene a una normal con muy pocos outliers
+Se nota con muchas mas fuerza en el histograma la distribucion normal.
+Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia tender a la normal. Ahora con una gran seguridad podemos confirmar que tiene a una normal con muy pocos outliers.
 Y el Q-Qplot se aferra con mucha mas fuerza a una distribucion normal.
 
 ###e)
@@ -496,7 +495,8 @@ hist(mediasC2, freq = FALSE, col = "grey", xlim = c(108, 114))
 curve(dnorm(x, mean=111.0976, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
 
-FALTA EXPLICACION, EL PUNTO C NI LO TOQUE
+Se observa en el histograma `mediasA` y en `mediasB`, poseen una asimetria a la derecha, dado a que la muestra parece no ser lo suficientemente grande, lo cual no nos da informacion respecto a si tiende a una normal.
+Con respecto a los histogramas, `mediasC1` y `mediasC2`, se puede observar como los graficos empiezan a represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria. Siendo la mas precisa, el histograma de `mediasC1`
 
 ```
 
