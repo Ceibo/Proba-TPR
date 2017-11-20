@@ -178,23 +178,24 @@ qqnorm(mediasC2)
 qqline(mediasC2)
 
 #Punto c)
-hist(mediasA, freq = FALSE)
+hist(mediasA, freq = FALSE, xlim = c(-10, 130), ylim = c(0, 0.01))
+curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
+#La misma con otra escala
+hist(mediasA, freq = FALSE, xlim = c(-10, 130), ylim = c(0, 0.4))
 curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 
 
-hist(mediasB)
-curve(dnorm(x, mean(y), sd(y)), add=TRUE, col="darkblue", lwd=2)
+
+hist(mediasB, freq = FALSE, xlim = c(-10, 120))
+curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 
 
+hist(mediasC1, freq = FALSE, col = "grey", ylim = c(0, 0.4))
+curve(dnorm(x, mean=111, sd=1), add=TRUE, col="darkblue", lwd=2)
 
-hist(mediasC1, freq = FALSE, col = "grey")
-curve(dnorm(x, mean(y), sd(y)), add=TRUE, col="darkblue", lwd=2)
 
-
-hist(mediasC2, freq = FALSE, col = "grey")
-x = mediasA
-curve(dnorm(x, mean(y), sd(y)), add=TRUE, col="darkblue", lwd=2)
-
+hist(mediasC2, freq = FALSE, col = "grey", xlim = c(109, 113))
+curve(dnorm(x, mean=111, sd=1), add=TRUE, col="darkblue", lwd=2)
 
 #Punto d) HACER
 
@@ -364,21 +365,28 @@ qqnorm(mediasC2)
 qqline(mediasC2)
 
 #Punto c)
-hist(mediasA, freq = FALSE)
+hist(mediasA, freq = FALSE, xlim = c(-10, 100), ylim = c(0, 0.5))
+curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
+#Otro del mismo pero en otra escala
+hist(mediasA, freq = FALSE, xlim = c(-10, 100), ylim = c(0, 0.03))
 curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 
 
-hist(mediasB)
-curve(dnorm(x, mean(y), sd(y)), add=TRUE, col="darkblue", lwd=2)
+hist(mediasB, freq = FALSE, xlim = c(-10, 120))
+curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 
 
 
-hist(mediasC1, freq = FALSE, col = "grey")
-curve(dnorm(x, mean(y), sd(y)), add=TRUE, col="darkblue", lwd=2)
+hist(mediasC1, freq = FALSE, col = "grey", ylim = c(0, 0.4))
+#111.1069 es la media muestral de eso. Lo estoy poniendo para que quede superpuesto, si hubiera puesto
+#la Normal(0,1) hubiera quedado en otro lado del gráfico. Acá solo la desplacé un poco para que quede más lindo.
+curve(dnorm(x, mean=111.1069, sd=1), add=TRUE, col="darkblue", lwd=2)
 
 
-hist(mediasC2, freq = FALSE, col = "grey")
-x = mediasA
-curve(dnorm(x, mean(y), sd(y)), add=TRUE, col="darkblue", lwd=2)
+
+hist(mediasC2, freq = FALSE, col = "grey", xlim = c(108, 114))
+curve(dnorm(x, mean=111.0976, sd=1), add=TRUE, col="darkblue", lwd=2)
+
 
 #FALTA EXPLICACION, EL PUNTO C NI LO TOQUE
+
