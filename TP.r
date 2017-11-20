@@ -132,16 +132,16 @@ varX4 <- var(mediasC2)
 #Punto b)
 
 #Transformación: (1/3 es la esperanza de la exp(3) )
-transformacionA <- (mediaX1 - (1/3))/(sqrt((1/9)/1000))
+transformacionA <- (mediaX1 - (1/3))/(sqrt((1/9)/2))
 transformacionA
 
-transformacionB <- (mediaX2 - (1/5))/(sqrt((1/25)/1000))
+transformacionB <- (mediaX2 - (1/3))/(sqrt((1/9)/5))
 transformacionB
 
-transformacionC1 <- (mediaX3 - (1/30))/(sqrt((1/900)/1000))
+transformacionC1 <- (mediaX3 - (1/3))/(sqrt((1/9)/30))
 transformacionC1
 
-transformacionC2 <- (mediaX3 - (1/500))/(sqrt((1/250000)/1000))
+transformacionC2 <- (mediaX3 - (1/3))/(sqrt((1/9)/1000))
 transformacionC2
 
 
@@ -160,7 +160,7 @@ qqnorm(mediasC2)
 qqline(mediasC2)
 
 #Punto c)
-hist(mediasA, freq = FALSE, xlim = c(-10, 130), ylim = c(0, 0.01))
+hist(mediasA, freq = FALSE, xlim = c(-3, 3), ylim = c(0, 1))
 curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 #La misma con otra escala
 hist(mediasA, freq = FALSE, xlim = c(-10, 130), ylim = c(0, 0.4))

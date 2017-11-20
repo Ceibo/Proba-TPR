@@ -7,6 +7,8 @@ output:
     toc: true # table of content true
     toc_depth: 3  # upto three depths of headings (specified by #, ## and ###)
 ---
+![Tendencia Probabilistica Revolucionaria](/home/sly/Escritorio/tpr_logo_web2.png)
+
 
 Lo primero que vamos a hacer es fijar la semilla de forma global.
 ```{r, eval=TRUE, echo=TRUE}
@@ -21,7 +23,7 @@ options(warn=-1)
 #Ejercicio 1
 Acá lo que hicimos fue usar el mismo código visto en clase para generar la exponencial, solo que en este caso el valor de retorno es la media, por que es lo que necesitabamos.
 También podríamos haber usado la función "rexp()".
-```{r, eval=TRUE, echo=TRUE}
+```{r, eval=TRUE, echo=FALSE}
 funcion.inversa <- function(u, lambda){
   sal <- -1*log(1-u)/lambda
   return(sal)
@@ -46,20 +48,22 @@ Ahora veamos los gráficos. Este primer gráfico es el que hicimos con el set.se
 ```{r, eval=TRUE, echo=TRUE}
 plot(y,col="blue")
 ```
+
 Este otro gráfico es el que hicimos con el set.seed() dentro de la función.
 ```{r, eval=TRUE, echo=TRUE}
 plot(z,col="red")
 ```
+
+En cuanto a set.seed() nos encontramos con que un gráfico se encuentra notablemente más concentrado sobre ciertos valores que el otro. Creemos que esto se debe a que si fijamos set.seed() localmente dentro de una función, al ejecutarla varias veces, dará siempre el mismo resultado.
+Según lo que pudimos encontrar, cuando la función set.seed() es fijada globalmente, al generar números "aleatorios" se empieza usando una secuencia de números desde el lugar indicado, pero luego las simulaciones siguientes irán cambiando en función de la anterior, o sea, que en cada generación de números no tiene por qué dar resultados iguales.
+
+
 Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05).
 En el plot de promedio, se observa como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
 Se puede observar el comportamiento asintotico del promedio muestral.
 
 
 #Ejercicio 2
-
-```{r, eval=TRUE, echo=TRUE}
-```
-
 
 ```{r, eval=TRUE, echo=FALSE}
 mediasA <- seq(length=1000)
@@ -82,6 +86,7 @@ boxplot(mediasA)
 qqnorm(mediasA)
 qqline(mediasA)#La cola del plot
 ```
+
 Se observa tanto en el histograma hay una asimetria a la derecha.
 En el Q-Q plot se observa una simetria de las colas livianas.
 En el boxplot se observa que tiene la cola superior pesada, ademas de los visibles outliers.
@@ -108,6 +113,7 @@ Q-Q Plot
 qqnorm(mediasB)
 qqline(mediasB)#La cola del plot
 ```
+
 Se observa que el histograma empieza a tender a una distribucion normal
 El boxplot hace notar mas las colas pesadas
 y el Q-Q plot sigue manteniedo la correcta simetria, lo cual tiene a una normal.
@@ -155,6 +161,7 @@ boxplot(c)
 qqnorm(c)
 qqline(c)
 ```
+
 Se nota con muchas mas fuerza en el histograma la distribucion normal.
 Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia tender a la normal. Ahora con una gran seguridad podemos confirmar que tiene a una normal con muy pocos outliers.
 Y el Q-Qplot se aferra con mucha mas fuerza a una distribucion normal.
@@ -164,6 +171,7 @@ Boxplot
 ```{r, eval=TRUE, echo=TRUE}
 boxplot(mediasA,mediasB,mediasC1,mediasC2,c)
 ```
+
 Obsevamos que con mayor muestra se puede verificar su tendencia a una distribucion normal.
 Dado que en el punto a, presuponia que poseia colas pesadas, tendiendo a la cola superior, con bastantes ouliers, siendo que cada vez que aumentabamos las muestras estos outleirs disminuian y las colas pesadas tendian a desaparecer y tender cada vez mas a la normal.
 
@@ -219,16 +227,16 @@ varX4
 ```{r, eval=TRUE, echo=TRUE}
 
 #Transformación: (1/3 es la esperanza de la exp(3) )
-transformacionA <- (mediaX1 - (1/3))/(sqrt((1/9)/1000))
+transformacionA <- (mediaX1 - (1/3))/(sqrt((1/9)/2))
 transformacionA
 
-transformacionB <- (mediaX2 - (1/5))/(sqrt((1/25)/1000))
+transformacionB <- (mediaX2 - (1/3))/(sqrt((1/9)/5))
 transformacionB
 
-transformacionC1 <- (mediaX3 - (1/30))/(sqrt((1/900)/1000))
+transformacionC1 <- (mediaX3 - (1/3))/(sqrt((1/9)/30))
 transformacionC1
 
-transformacionC2 <- (mediaX3 - (1/500))/(sqrt((1/250000)/1000))
+transformacionC2 <- (mediaX3 - (1/3))/(sqrt((1/9)/1000))
 transformacionC2
 
 boxplot(mediasA, mediasB, mediasC1, mediasC2)
@@ -276,7 +284,6 @@ curve(dnorm(x, mean=111, sd=1), add=TRUE, col="darkblue", lwd=2)
 Se observa en el histograma `mediasA` no tiene una buena aproximacion,dado a que sera necesaria una muestra mayor, dado que carece de simetria, lo cual no nos da informacion respecto a si tiende a una normal.
 Con respecto a los histogramas, `mediasB`, `mediasC1` y `mediasC2`, se puede observar como los graficos empiezan a represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria.
 Aunque estaria bueno, poder agrander la muestra para el histograma `mediasB`, para que sea mas claro la forma de la campana, dado que en la muestra actual, la misma es minuscula.
-
 
 ```{r, eval=TRUE, echo=FALSE}
 y <- seq(length = 3000)
