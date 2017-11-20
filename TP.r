@@ -31,10 +31,6 @@ for (j in 1:3000){
 
 plot(y,col="blue")
 plot(z,col="red")
-#Explicacion
-# Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05)
-# En el plot de promedio, se obvserva como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
-# Se puede observar el comportamiento asintotico del promedio muestral.
 
 #Ejercicio 2
 #2 a)
@@ -54,10 +50,6 @@ boxplot(mediasA)
 qqnorm(mediasA)
 qqline(mediasA)#La cola del plot
 
-#Se observa tanto en el histograma hay una asimetria a la derecha.
-# En el Q-Q plot se observa una simetria de las colas livianas 
-# En el boxplot se observa que tiene la cola superior pesada, ademas de los visibles outliers
-
 # Punto b)
 
 mediasB <- seq(length = 1000)
@@ -76,9 +68,6 @@ boxplot(mediasB)
 qqnorm(mediasB)
 qqline(mediasB)#La cola del plot
 
-#se observa que el histograma empieza a tender a una distribucion normal
-#El boxplot hace notar mas las colas pesadas
-#y el Q-Q plot sigue manteniedo la correcta simetria, lo cual tiene a una normal.
 
 #Punto C
 mediasC1 <- seq(length = 1000) #Acá van con n=30
@@ -116,17 +105,11 @@ boxplot(c)
 qqnorm(c)
 qqline(c)
 
-#Se nota con muchas mas fuerza en el histograma la distribucion normal
-#Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia tender a la normal. Ahora con una gran seguridad podemos confirmar que tiene a una normal con muy pocos outliers
-#Y el Q-Qplot se aferra con mucha mas fuerza a una distribucion normal.
 
 #Punto E
 
 #boxplot
 boxplot(mediasA,mediasB,mediasC1,mediasC2,c)
-
-#obsevamos que con mayor muestra se puede verificar su tendencia a una distribucion normal.
-#dado que en el punto a, presuponia que poseia colas pesadas, tendiendo a la cola superior, con bastantes ouliers, siendo que cada vez que aumentabamos las muestras estos outleirs disminuian y las colas pesadas tendian a desaparecer y tender cada vez mas a la normal.
 
 #EJ 3
 
@@ -161,7 +144,7 @@ transformacionC1
 transformacionC2 <- (mediaX3 - (1/500))/(sqrt((1/250000)/1000))
 transformacionC2
 
-#DE QUE ME PIDEN QUE HAGA LOS BOXPLOTS??? NO ME QUEDA CLARO
+
 boxplot(mediasA, mediasB, mediasC1, mediasC2)
 
 qqnorm(mediasA)
@@ -196,15 +179,9 @@ curve(dnorm(x, mean=111, sd=1), add=TRUE, col="darkblue", lwd=2)
 hist(mediasC2, freq = FALSE, col = "grey", xlim = c(109, 113))
 curve(dnorm(x, mean=111, sd=1), add=TRUE, col="darkblue", lwd=2)
 
-#Punto d) HACER
+#Punto d) pdf
 
-# Se observa en el histograma `mediasA` no tiene una buena aproximacion,dado a que sera necesaria una muestra mayor, dado que carece de simetria, lo cual no nos da informacion respecto a si tiene a una normal
-# Con respecto a los histogramas, `mediasB`, `mediasC1` y `mediasC2`, se puede observar como los graficos empiezan a represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria.
-# Aunque estaria bueno, poder agrander la muestra para el histograma `mediasB`, para que sea mas claro la forma de la campana, dado que en la muestra actual, la misma es minuscula.
 #EJ 4
-#x <- rnorm(1000)
-#hist(x, freq = FALSE, col = "grey")
-#curve(dnorm(x, 3, 2), col = 2, add = TRUE)
 
 
 y <- seq(length = 3000)
@@ -220,10 +197,7 @@ for (j in 1:3000){
 
 plot(y,col="blue")
 plot(z,col="red")
-#Explicacion
-# Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05)
-# En el plot de promedio, se obvserva como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
-# Se puede observar el comportamiento asintotico del promedio muestral.
+
 
 #Ejercicio 2
 #2 a)
@@ -243,10 +217,6 @@ boxplot(mediasA)
 qqnorm(mediasA)
 qqline(mediasA)#La cola del plot
 
-#Del histograma se obveserva simetria de las colas livianas 
-# En el Q-Q plot se observa una simetria de las colas livianas .
-# Se observa que el boxplot tiende a una normal 
-
 # Punto b)
 
 mediasB <- seq(length = 1000)
@@ -265,9 +235,6 @@ boxplot(mediasB)
 qqnorm(mediasB)
 qqline(mediasB)#La cola del plot
 
-#se observa que el histograma simetria de las colas livianas es mas fuerte
-#El boxplot es una "perfecta" normal.
-#y el Q-Q plot sigue manteniedo la  simetria de las colas livianas
 
 #Punto C
 mediasC1 <- seq(length = 1000) #Acá van con n=30
@@ -305,17 +272,11 @@ boxplot(c)
 qqnorm(c)
 qqline(c)
 
-#Se nota con muchas mas fuerza en el histograma la distribucion normal
-#Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia tender a la normal. Ahora con una gran seguridad podemos confirmar que tiene a una normal con muy pocos outliers
-#Y el Q-Qplot se aferra con mucha mas fuerza a una distribucion normal.
-
 #Punto E
 
 #boxplot
 boxplot(mediasA,mediasB,mediasC1,mediasC2,c)
 
-#obsevamos que con una menor muestra se puede verificar su tendencia a una distribucion normal.
-#Si aumentamos el n, el boxplot empieza a tener colas pesadas y deja de tender a una normal.
 #EJ 3
 
 #Punto a)
@@ -385,7 +346,3 @@ curve(dnorm(x, mean=111.1069, sd=1), add=TRUE, col="darkblue", lwd=2)
 
 hist(mediasC2, freq = FALSE, col = "grey", xlim = c(108, 114))
 curve(dnorm(x, mean=111.0976, sd=1), add=TRUE, col="darkblue", lwd=2)
-
-
-#FALTA EXPLICACION, EL PUNTO C NI LO TOQUE
-
