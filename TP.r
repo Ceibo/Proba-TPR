@@ -4,7 +4,7 @@
 
 #Fijo la "semilla" para que no nos de cosas distintos resultados cada vez que experimentamos
 set.seed(1109)
-
+options(warn=-1) #Le saco los warnings para que no joda, en la binomial tira muchos, pero no se va de rango. Todo ok
 #Ejercicio 1
 #Esto es un copypaste de la exponencial de la clase11 pero que en el return tiene la media
 
@@ -31,7 +31,6 @@ for (j in 1:3000){
 
 plot(y,col="blue")
 plot(z,col="red")
-#Ver los graficos bizarros que me da
 #Explicacion
 # Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05)
 # En el plot de promedio, se obvserva como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
