@@ -322,7 +322,7 @@ z <- seq(length = 3000)
 for (j in 1:3000){
   set.seed(1109)
   z[j] <- mean(rbinom(5,size=j,prob=1/9))
-}
+} 
 
 plot(y,col="blue")
 plot(z,col="red")
@@ -367,7 +367,7 @@ Se observa que el boxplot tiende a una normal.
 mediasB <- seq(length = 1000)
 
 for (i in 1:1000){
-  a <- c(rbinom(10,size=i, prob=1/9), rbinom(10,size=i, prob=1/9), rbinom(10,size=i, prob=1/9), rbinom(10,size=i, prob=1/9), rbinom(10,size=i, prob=1/9))
+  a <- c(rbinom(5,size=i, prob=1/9),rbinom(5,size=i, prob=1/9),rbinom(5,size=i, prob=1/9),rbinom(5,size=i, prob=1/9),rbinom(5,size=i, prob=1/9))
   mediasB[i] = mean(a)
 }
 ```
@@ -396,8 +396,8 @@ a <- seq(length = 30)
 b <- seq(length = 500)
 
 for (j in 1:1000){
-  a <- rbinom(30,size=i, prob=1/9)
-  b <- rbinom(500,size=i, prob=1/9)
+  a <- rbinom(5,size=i, prob=1/9)
+  b <- rbinom(5,size=i, prob=1/9)
   mediasC1[j] = mean(a)
   mediasC2[j] = mean(b)
 }
@@ -490,24 +490,24 @@ varX4
 ```{r, eval=TRUE, echo=FALSE}
 transformacionesA <- seq(1000)
 for (i in 1:1000){
-  transformacionesA[i] <- (mediasA[i] - (5/9))/(sqrt((25/81*64/81)/2))
+  transformacionesA[i] <- (mediasA[i] - (5/9))/(sqrt((40/81)/2))
 }
 
 transformacionesB <- seq(1000)
 for (i in 1:1000){
-  transformacionesB[i] <- (mediasB[i] - (5/9))/(sqrt((25/81*64/81))/5)
+  transformacionesB[i] <- (mediasB[i] - (5/9))/(sqrt((40/81))/5)
 }
 
 
 transformacionesC1 <- seq(1000)
 for (i in 1:1000){
-  transformacionesC1[i] <- (mediasC1[i] - (5/9))/(sqrt((25/81*64/81))/30)
+  transformacionesC1[i] <- (mediasC1[i] - (5/9))/(sqrt((40/81))/30)
 }
 
 
 transformacionesC2 <- seq(1000)
 for (i in 1:1000){
-  transformacionesC2[i] <- (mediasC2[i] - (5/9))/(sqrt((25/81*64/81))/500)
+  transformacionesC2[i] <- (mediasC2[i] - (5/9))/(sqrt((40/81))/500)
 }
 
 ```
