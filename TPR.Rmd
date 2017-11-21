@@ -309,6 +309,10 @@ curve(dnorm(x, mean = 0, sd = 1), add = TRUE, col = "darkblue", lwd = 2)
 Con respecto a los histogramas,`mediasA`  `mediasB`, `mediasC1` y `mediasC2`, se puede observar como los graficos empiezan a represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria.
 
 
+#Ejercicio 4
+
+##Punto 1
+
 ```{r, eval=TRUE, echo=FALSE}
 y <- seq(length = 3000)
 for (i in 1:3000){
@@ -324,15 +328,14 @@ plot(y,col="blue")
 plot(z,col="red")
 ```
 
-#Ejercicio 4
-
-##Punto 1
-Explicacion
 Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05).
 En el plot de promedio, se observa como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
 Se puede observar el comportamiento asintotico del promedio muestral.
+
 ##Punto 2
+
 ###a)
+
 ```{r, eval=TRUE, echo=FALSE}
 #a)
 mediasA <- seq(length=1000)
@@ -353,11 +356,13 @@ boxplot(mediasA)
 qqnorm(mediasA)
 qqline(mediasA)#La cola del plot
 ```
+
 Del histograma se obveserva simetria de las colas livianas.
 En el Q-Q plot se observa una simetria de las colas livianas.
 Se observa que el boxplot tiende a una normal.
 
 ###b)
+
 ```{r, eval=TRUE, echo=FALSE}
 mediasB <- seq(length = 1000)
 
@@ -377,10 +382,12 @@ boxplot(mediasB)
 qqnorm(mediasB)
 qqline(mediasB)#La cola del plot
 ```
+
 Se observa que el histograma simetria de las colas livianas es mas fuerte.
 El boxplot es una "perfecta" normal y el Q-Q plot sigue manteniedo la  simetria de las colas livianas.
 
 ###c)
+
 ```{r, eval=TRUE, echo=FALSE}
 mediasC1 <- seq(length = 1000) #Acá van con n=30
 mediasC2 <-seq(length = 1000) #Acá van con n=500
@@ -398,10 +405,12 @@ for (j in 1:1000){
 ```{r, eval=TRUE, echo=TRUE}
 #Histograma
 hist(mediasC1)
+
 hist(mediasC2)
 
 #Boxplot
 boxplot(mediasC1)
+
 boxplot(mediasC2)
 
 #Q-Q Plot
@@ -414,24 +423,33 @@ qqline(mediasC2)
 ```{r, eval=TRUE, echo=FALSE}
 #d)
 c <- rnorm(1000, 0, 1)
+
 hist(c)
+
 boxplot(c)
+
 qqnorm(c)
 qqline(c)
 ```
+
 Se nota con muchas mas fuerza en el histograma la distribucion normal.
 Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia tender a la normal. Ahora con una gran seguridad podemos confirmar que tiene a una normal con muy pocos outliers.
 Y el Q-Qplot se aferra con mucha mas fuerza a una distribucion normal.
 
 ###e)
+
 ```{r, eval=TRUE, echo=TRUE}
 boxplot(mediasA,mediasB,mediasC1,mediasC2,c)
 ```
+
 Obsevamos que con una menor muestra se puede verificar su tendencia a una distribucion normal.
 Si aumentamos el n, el boxplot empieza a tener colas pesadas y deja de tender a una normal.
+
+
 ##Punto 3
 
 ###a)
+
 ```{r, eval=TRUE, echo=FALSE}
 mediaX1 <- mean(mediasA)
 varX1 <- var(mediasA)
@@ -468,8 +486,8 @@ varX4
 ```
 
 ###b)
+
 ```{r, eval=TRUE, echo=FALSE}
-#Transformación: (np es la esperanza es decir 5*1/9== 5/9 y la varianza es np(1-p), 5/9*8/9)
 transformacionesA <- seq(1000)
 for (i in 1:1000){
   transformacionesA[i] <- (mediasA[i] - (5/9))/(sqrt((25/81*64/81)/2))
@@ -489,7 +507,7 @@ for (i in 1:1000){
 
 transformacionesC2 <- seq(1000)
 for (i in 1:1000){
-  transformacionesC2[i] <- (mediasC2[i] - (5/9))/(sqrt((25/81*64/81)))
+  transformacionesC2[i] <- (mediasC2[i] - (5/9))/(sqrt((25/81*64/81))/500)
 }
 
 ```
@@ -509,63 +527,32 @@ qqline(transformacionesC1)
 qqnorm(transformacionesC2)
 qqline(transformacionesC2)
 ```
+
 ###c)
-```{r, eval=TRUE, echo=FALSE}
-hist(mediasA, freq = FALSE, xlim = c(-10, 100), ylim = c(0, 0.5))
-curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
-```
 
-Otro del mismo pero en otra escala
 
 ```{r, eval=TRUE, echo=FALSE}
-hist(mediasA, freq = FALSE, xlim = c(-10, 100), ylim = c(0, 0.03))
+hist(transformacionesA, freq = FALSE)
 curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
 
 ```{r, eval=TRUE, echo=FALSE}
-hist(mediasB, freq = FALSE, xlim = c(-10, 120))
+hist(transformacionesB, freq = FALSE)
 curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
 
 ```{r, eval=TRUE, echo=FALSE}
-hist(mediasC1, freq = FALSE, col = "grey", ylim = c(0, 0.4))
-#111.1069 es la media muestral de eso. Lo estoy poniendo para que quede superpuesto, si hubiera puesto
-#la Normal(0,1) hubiera quedado en otro lado del gráfico. Acá solo la desplacé un poco para que quede más lindo.
-curve(dnorm(x, mean=111.1069, sd=1), add=TRUE, col="darkblue", lwd=2)
+hist(transformacionesC1, freq = FALSE)
+curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
 
 ```{r, eval=TRUE, echo=FALSE}
-hist(mediasC2, freq = FALSE, col = "grey", xlim = c(108, 114))
-curve(dnorm(x, mean=111.0976, sd=1), add=TRUE, col="darkblue", lwd=2)
+hist(transformacionesC2, freq = FALSE)
+curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
+
+
+
 
 Se observa en el histograma `mediasA` y en `mediasB`, poseen una asimetria a la derecha, dado a que la muestra parece no ser lo suficientemente grande, lo cual no nos da informacion respecto a si tiende a una normal.
 Con respecto a los histogramas, `mediasC1` y `mediasC2`, se puede observar como los grafico represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria. Siendo la mas precisa, el histograma de `mediasC1`
-
-```
-
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-# R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-# Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
