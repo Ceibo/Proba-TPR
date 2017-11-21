@@ -513,7 +513,6 @@ for (i in 1:1000){
 ```
 ```{r, eval=TRUE, echo=TRUE}
 boxplot(transformacionesA, transformacionesB, transformacionesC1, transformacionesC2)
-boxplot(mediasA, mediasB, mediasC1, mediasC2)
 
 qqnorm(transformacionesA)
 qqline(transformacionesA)
