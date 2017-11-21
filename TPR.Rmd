@@ -181,7 +181,7 @@ Dado que en el punto a, presuponia que poseia colas pesadas, tendiendo a la cola
 
 ##a)
 Estamos suponiendo que se refiere a la esperanza y varianza muestral.
-```{r, eval=TRUE, echo=FALSE}
+```{r, eval=TRUE, echo=TRUE}
 mediaX1 <- mean(mediasA)
 varX1 <- var(mediasA)
 
@@ -226,46 +226,33 @@ varX4
 ```
 
 ##b)
-No nos quedó muy claro que era lo que había que hacer en este punto.
-Entendimos que Xn es el promedio muestral aplicado sobre las medias 
-```{r, eval=TRUE, echo=TRUE}
-
+```{r, eval=TRUE, echo=FALSE}
 #Transformación: (1/3 es la esperanza de la exp(3) )
 transformacionesA <- seq(1000)
 for (i in 1:1000){
 transformacionesA[i] <- (mediasA[i] - (1/3))/(sqrt((1/9)/2))
 }
-#transformacionA
 
 transformacionesB <- seq(1000)
 for (i in 1:1000){
 transformacionesB[i] <- (mediasB[i] - (1/3))/(sqrt((1/9)/5))
 }
 
-#transformacionB <- (mediaX2 - (1/3))/(sqrt((1/9)/5))
-#transformacionB
-
 transformacionesC1 <- seq(1000)
 for (i in 1:1000){
 transformacionesC1[i] <- (mediasC1[i] - (1/3))/(sqrt((1/9)/30))
 }
-
-#transformacionC1 <- (mediaX3 - (1/3))/(sqrt((1/9)/30))
-#transformacionC1
 
 transformacionesC2 <- seq(1000)
 for (i in 1:1000){
 transformacionesC2[i] <- (mediasC2[i] - (1/3))/(sqrt((1/9)/500))
 }
 
-#transformacionC2 <- (mediaX3 - (1/3))/(sqrt((1/9)/1000))
-#transformacionC2
 ```
 
 Boxplot de las transformaciones, abajo los de las medias.
 ```{r, eval=TRUE, echo=TRUE}
 boxplot(transformacionesA, transformacionesB, transformacionesC1, transformacionesC2)
-boxplot(mediasA, mediasB, mediasC1, mediasC2)
 ```
 
 Q-Q Plots. De las medias y después de las transformaciones.
@@ -327,10 +314,6 @@ for (j in 1:3000){
 plot(y,col="blue")
 plot(z,col="red")
 ```
-
-Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05).
-En el plot de promedio, se observa como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
-Se puede observar el comportamiento asintotico del promedio muestral.
 
 ##Punto 2
 
@@ -404,30 +387,40 @@ for (j in 1:1000){
 ```
 ```{r, eval=TRUE, echo=TRUE}
 #Histograma
+
 hist(mediasC1)
 
 hist(mediasC2)
 
 #Boxplot
+
 boxplot(mediasC1)
 
 boxplot(mediasC2)
 
 #Q-Q Plot
 qqnorm(mediasC1)
+
 qqline(mediasC1)#La cola del plot
 
 qqnorm(mediasC2)
+
 qqline(mediasC2)
 ```
+
+###d)
+
 ```{r, eval=TRUE, echo=FALSE}
-#d)
 c <- rnorm(1000, 0, 1)
+```
 
+```{r, eval=TRUE, echo=TRUE}
 hist(c)
-
+```
+```{r, eval=TRUE, echo=TRUE}
 boxplot(c)
-
+```
+```{r, eval=TRUE, echo=TRUE}
 qqnorm(c)
 qqline(c)
 ```
@@ -550,8 +543,8 @@ hist(transformacionesC2, freq = FALSE)
 curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
 
-
-
-
 Se observa en el histograma `mediasA` y en `mediasB`, poseen una asimetria a la derecha, dado a que la muestra parece no ser lo suficientemente grande, lo cual no nos da informacion respecto a si tiende a una normal.
-Con respecto a los histogramas, `mediasC1` y `mediasC2`, se puede observar como los grafico represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria. Siendo la mas precisa, el histograma de `mediasC1`
+
+En los últimos gráficos notamos que a medida que el n se va agrandando, se va pareciendo más a una normal, sin embargo no se parece tanto como creemos que tendría que pasar, ya que no aproxima a una normal standard.
+
+Creemos que esto se debe a algún error en nuestro código al momento de hacer la transformación o al usar la función rbinom.
