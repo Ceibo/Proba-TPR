@@ -132,52 +132,66 @@ varX4 <- var(mediasC2)
 #Punto b)
 
 #Transformación: (1/3 es la esperanza de la exp(3) )
-transformacionA <- (mediaX1 - (1/3))/(sqrt((1/9)/2))
-transformacionA
+transformacionesA <- seq(1000)
+for (i in 1:1000){
+  transformacionesA[i] <- (mediasA[i] - (1/3))/(sqrt((1/9)/2))
+}
+#transformacionA
 
-transformacionB <- (mediaX2 - (1/3))/(sqrt((1/9)/5))
-transformacionB
+transformacionesB <- seq(1000)
+for (i in 1:1000){
+  transformacionesB[i] <- (mediasB[i] - (1/3))/(sqrt((1/9)/5))
+}
 
-transformacionC1 <- (mediaX3 - (1/3))/(sqrt((1/9)/30))
-transformacionC1
+#transformacionB <- (mediaX2 - (1/3))/(sqrt((1/9)/5))
+#transformacionB
 
-transformacionC2 <- (mediaX3 - (1/3))/(sqrt((1/9)/1000))
-transformacionC2
+transformacionesC1 <- seq(1000)
+for (i in 1:1000){
+  transformacionesC1[i] <- (mediasC1[i] - (1/3))/(sqrt((1/9)/30))
+}
+
+#transformacionC1 <- (mediaX3 - (1/3))/(sqrt((1/9)/30))
+#transformacionC1
+
+transformacionesC2 <- seq(1000)
+for (i in 1:1000){
+  transformacionesC2[i] <- (mediasC2[i] - (1/3))/(sqrt((1/9)/500))
+}
+
+#transformacionC2 <- (mediaX3 - (1/3))/(sqrt((1/9)/1000))
+#transformacionC2
 
 
+boxplot(transformacionesA, transformacionesB, transformacionesC1, transformacionesC2)
 boxplot(mediasA, mediasB, mediasC1, mediasC2)
 
-qqnorm(mediasA)
-qqline(mediasA)
+qqnorm(transformacionesA)
+qqline(transformacionesA)
 
-qqnorm(mediasB)
-qqline(mediasB)
+qqnorm(transformacionesB)
+qqline(transformacionesB)
 
-qqnorm(mediasC1)
-qqline(mediasC1)
+qqnorm(transformacionesC1)
+qqline(transformacionesC1)
 
-qqnorm(mediasC2)
-qqline(mediasC2)
+qqnorm(transformacionesC2)
+qqline(transformacionesC2)
 
 #Punto c)
-hist(mediasA, freq = FALSE, xlim = c(-3, 3), ylim = c(0, 1))
-curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
-#La misma con otra escala
-hist(mediasA, freq = FALSE, xlim = c(-10, 130), ylim = c(0, 0.4))
-curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
+hist(transformacionesA, freq = FALSE, col = "grey", xlim = c(-3.5, 3.5))
+curve(dnorm(x, mean = 0, sd = 1), add = TRUE, col = "darkblue", lwd = 2)
+
+hist(transformacionesB, freq = FALSE, col = "grey", xlim = c(-3.5, 3.5))
+curve(dnorm(x, mean = 0, sd = 1), add = TRUE, col = "darkblue", lwd = 2)
 
 
-
-hist(mediasB, freq = FALSE, xlim = c(-10, 120))
-curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
-
-
-hist(mediasC1, freq = FALSE, col = "grey", ylim = c(0, 0.4))
-curve(dnorm(x, mean=111, sd=1), add=TRUE, col="darkblue", lwd=2)
+hist(transformacionesC1, freq = FALSE, col = "grey", xlim = c(-3.5, 3.5))
+curve(dnorm(x, mean = 0, sd = 1), add = TRUE, col = "darkblue", lwd = 2)
 
 
-hist(mediasC2, freq = FALSE, col = "grey", xlim = c(109, 113))
-curve(dnorm(x, mean=111, sd=1), add=TRUE, col="darkblue", lwd=2)
+hist(transformacionesC2, freq = FALSE, col = "grey", xlim = c(-3.5, 3.5))
+curve(dnorm(x, mean = 0, sd = 1), add = TRUE, col = "darkblue", lwd = 2)
 
 #Punto d) pdf
 
@@ -298,31 +312,43 @@ varX4 <- var(mediasC2)
 #Punto b)
 
 #Transformación: (np es la esperanza es decir 5*1/9== 5/9 )
-transformacionA <- (mediaX1 - (5/9))/(sqrt((25/81)/1000))
-transformacionA
+transformacionesA <- seq(1000)
+for (i in 1:1000){
+  transformacionesA[i] <- (mediasA[i] - (5/9))/(sqrt((25/81)/2))
+}
 
-transformacionB <- (mediaX2 - (10/9))/(sqrt((100/81)/1000))
-transformacionB
-transformacionC1 <- (mediaX3 - (30/9))/(sqrt((900/81)/1000))
-transformacionC1
+transformacionesB <- seq(1000)
+for (i in 1:1000){
+  transformacionesB[i] <- (mediasB[i] - (5/9))/(sqrt((25/81)/5))
+}
 
-transformacionC2 <- (mediaX3 - (500/9))/(sqrt((250000/81)/1000))
-transformacionC2
 
-#
+transformacionesC1 <- seq(1000)
+for (i in 1:1000){
+  transformacionesC1[i] <- (mediasC1[i] - (5/9))/(sqrt((25/81)/30))
+}
+
+
+transformacionesC2 <- seq(1000)
+for (i in 1:1000){
+  transformacionesC2[i] <- (mediasC2[i] - (5/9))/(sqrt((25/81)/500))
+}
+
+
+boxplot(transformacionesA, transformacionesB, transformacionesC1, transformacionesC2)
 boxplot(mediasA, mediasB, mediasC1, mediasC2)
 
-qqnorm(mediasA)
-qqline(mediasA)
+qqnorm(transformacionesA)
+qqline(transformacionesA)
 
-qqnorm(mediasB)
-qqline(mediasB)
+qqnorm(transformacionesB)
+qqline(transformacionesB)
 
-qqnorm(mediasC1)
-qqline(mediasC1)
+qqnorm(transformacionesC1)
+qqline(transformacionesC1)
 
-qqnorm(mediasC2)
-qqline(mediasC2)
+qqnorm(transformacionesC2)
+qqline(transformacionesC2)
 
 #Punto c)
 hist(mediasA, freq = FALSE, xlim = c(-10, 100), ylim = c(0, 0.5))

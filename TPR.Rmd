@@ -306,9 +306,8 @@ curve(dnorm(x, mean = 0, sd = 1), add = TRUE, col = "darkblue", lwd = 2)
 
 ##d)
 
-Se observa en el histograma `mediasA` no tiene una buena aproximacion,dado a que sera necesaria una muestra mayor, dado que carece de simetria, lo cual no nos da informacion respecto a si tiende a una normal.
-Con respecto a los histogramas, `mediasB`, `mediasC1` y `mediasC2`, se puede observar como los graficos empiezan a represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria.
-Aunque estaria bueno, poder agrander la muestra para el histograma `mediasB`, para que sea mas claro la forma de la campana, dado que en la muestra actual, la misma es minuscula.
+Con respecto a los histogramas,`mediasA`  `mediasB`, `mediasC1` y `mediasC2`, se puede observar como los graficos empiezan a represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria.
+
 
 ```{r, eval=TRUE, echo=FALSE}
 y <- seq(length = 3000)
@@ -471,31 +470,44 @@ varX4
 ###b)
 ```{r, eval=TRUE, echo=FALSE}
 #Transformación: (np es la esperanza es decir 5*1/9== 5/9 )
-transformacionA <- (mediaX1 - (5/9))/(sqrt((25/81)/1000))
-transformacionA
+transformacionesA <- seq(1000)
+for (i in 1:1000){
+  transformacionesA[i] <- (mediasA[i] - (5/9))/(sqrt((25/81)/2))
+}
 
-transformacionB <- (mediaX2 - (10/9))/(sqrt((100/81)/1000))
-transformacionB
-transformacionC1 <- (mediaX3 - (30/9))/(sqrt((900/81)/1000))
-transformacionC1
+transformacionesB <- seq(1000)
+for (i in 1:1000){
+  transformacionesB[i] <- (mediasB[i] - (5/9))/(sqrt((25/81)/5))
+}
 
-transformacionC2 <- (mediaX3 - (500/9))/(sqrt((250000/81)/1000))
-transformacionC2
+
+transformacionesC1 <- seq(1000)
+for (i in 1:1000){
+  transformacionesC1[i] <- (mediasC1[i] - (5/9))/(sqrt((25/81)/30))
+}
+
+
+transformacionesC2 <- seq(1000)
+for (i in 1:1000){
+  transformacionesC2[i] <- (mediasC2[i] - (5/9))/(sqrt((25/81)/500))
+}
+
 ```
 ```{r, eval=TRUE, echo=TRUE}
+boxplot(transformacionesA, transformacionesB, transformacionesC1, transformacionesC2)
 boxplot(mediasA, mediasB, mediasC1, mediasC2)
 
-qqnorm(mediasA)
-qqline(mediasA)
+qqnorm(transformacionesA)
+qqline(transformacionesA)
 
-qqnorm(mediasB)
-qqline(mediasB)
+qqnorm(transformacionesB)
+qqline(transformacionesB)
 
-qqnorm(mediasC1)
-qqline(mediasC1)
+qqnorm(transformacionesC1)
+qqline(transformacionesC1)
 
-qqnorm(mediasC2)
-qqline(mediasC2)
+qqnorm(transformacionesC2)
+qqline(transformacionesC2)
 ```
 ###c)
 ```{r, eval=TRUE, echo=FALSE}
@@ -528,7 +540,7 @@ curve(dnorm(x, mean=111.0976, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
 
 Se observa en el histograma `mediasA` y en `mediasB`, poseen una asimetria a la derecha, dado a que la muestra parece no ser lo suficientemente grande, lo cual no nos da informacion respecto a si tiende a una normal.
-Con respecto a los histogramas, `mediasC1` y `mediasC2`, se puede observar como los graficos empiezan a represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria. Siendo la mas precisa, el histograma de `mediasC1`
+Con respecto a los histogramas, `mediasC1` y `mediasC2`, se puede observar como los grafico represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria. Siendo la mas precisa, el histograma de `mediasC1`
 
 ```
 
