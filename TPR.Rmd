@@ -469,27 +469,27 @@ varX4
 
 ###b)
 ```{r, eval=TRUE, echo=FALSE}
-#Transformación: (np es la esperanza es decir 5*1/9== 5/9 )
+#Transformación: (np es la esperanza es decir 5*1/9== 5/9 y la varianza es np(1-p), 5/9*8/9)
 transformacionesA <- seq(1000)
 for (i in 1:1000){
-  transformacionesA[i] <- (mediasA[i] - (5/9))/(sqrt((25/81)/2))
+  transformacionesA[i] <- (mediasA[i] - (5/9))/(sqrt((25/81*64/81)/2))
 }
 
 transformacionesB <- seq(1000)
 for (i in 1:1000){
-  transformacionesB[i] <- (mediasB[i] - (5/9))/(sqrt((25/81)/5))
+  transformacionesB[i] <- (mediasB[i] - (5/9))/(sqrt((25/81*64/81))/5)
 }
 
 
 transformacionesC1 <- seq(1000)
 for (i in 1:1000){
-  transformacionesC1[i] <- (mediasC1[i] - (5/9))/(sqrt((25/81)/30))
+  transformacionesC1[i] <- (mediasC1[i] - (5/9))/(sqrt((25/81*64/81))/30)
 }
 
 
 transformacionesC2 <- seq(1000)
 for (i in 1:1000){
-  transformacionesC2[i] <- (mediasC2[i] - (5/9))/(sqrt((25/81)/500))
+  transformacionesC2[i] <- (mediasC2[i] - (5/9))/(sqrt((25/81*64/81)))
 }
 
 ```
