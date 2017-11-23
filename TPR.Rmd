@@ -4,10 +4,11 @@ author: "Luis Greco - Nicolas Hertzulis - Ruslan Sanmartin Sobol"
 date: "20 de noviembre de 2017"
 output:
   pdf_document:
+    fig_caption: TRUE
     toc: true # table of content true
     toc_depth: 3  # upto three depths of headings (specified by #, ## and ###)
 ---
-[Tendencia Probabilistica Revolucionaria](/home/sly/Escritorio/tpr_logo_web2.png)
+![Tendencia Probabilistica Revolucionaria](/home/sly/Desktop/tpr_logo_web2.png)
 
 
 Lo primero que vamos a hacer es fijar la semilla de forma global.
@@ -21,7 +22,7 @@ options(warn=-1)
 
 
 #Ejercicio 1
-Acá lo que hicimos fue usar el mismo código visto en clase para generar la exponencial, solo que en este caso el valor de retorno es la media, por que es lo que necesitabamos.
+Acá lo que hicimos fue usar el mismo código visto en clase para generar la exponencial, sólo que en este caso el valor de retorno es la media, por que es lo que necesitabamos.
 También podríamos haber usado la función "rexp()".
 ```{r, eval=TRUE, echo=FALSE}
 funcion.inversa <- function(u, lambda){
@@ -49,22 +50,22 @@ Ahora veamos los gráficos. Este primer gráfico es el que hicimos con el set.se
 plot(y,col="blue")
 ```
 
-Este otro gráfico es el que hicimos con el set.seed() dentro de la función.
+Este otro, es el que hicimos con el set.seed() dentro de la función.
 ```{r, eval=TRUE, echo=TRUE}
 plot(z,col="red")
 ```
 
-En cuanto a set.seed() nos encontramos con que un gráfico se encuentra notablemente más concentrado sobre ciertos valores que el otro. Creemos que esto se debe a que si fijamos set.seed() localmente dentro de una función, al ejecutarla varias veces, dará siempre el mismo resultado.
-Según lo que pudimos encontrar, cuando la función set.seed() es fijada globalmente, al generar números "aleatorios" se empieza usando una secuencia de números desde el lugar indicado, pero luego las simulaciones siguientes irán cambiando en función de la anterior, o sea, que en cada generación de números no tiene por qué dar resultados iguales.
+Nos encontramos con que un gráfico se encuentra notablemente más concentrado sobre ciertos valores que el otro. Creemos que esto se debe a que si fijamos set.seed() localmente dentro de una función, al ejecutarla varias veces, dará siempre el mismo resultado.
+Según lo que pudimos encontrar, cuando la función set.seed() es fijada globalmente, al generar números "aleatorios" se empieza usando una secuencia de números desde el subíndice indicado, pero luego las simulaciones siguientes irán cambiando en función de la anterior, o sea que al fijar set.seed() localmente, en cada generación de números no necesariamente tienen que dar iguales.
 
 
-Se puede verificar mediante la Ley de Grandes Numeros, la media real y la media estimada, son casi exactas, con un posible error de (+0,05 o -0,05).
-En el plot de promedio, se observa como por la LGN, la misma converge a la media cuando su tamaño de muestras tiende a infinito.
-Se puede observar el comportamiento asintotico del promedio muestral.
+También pudimos observar el cumplimiento de la Ley de los Grandes Números, al ver que a medida que aumenta el tamaño de la muestra, la media de la misma tiende al valor de la esperanza teórica.
 
+Por lo que explicamos anteriormente sobre el uso de set.seed(), en el segundo gráfico se nota una tendencia muchísimo más marcada.
 
 #Ejercicio 2
 
+##a)
 ```{r, eval=TRUE, echo=FALSE}
 mediasA <- seq(length=1000)
 for (j in 1:1000){
@@ -87,9 +88,7 @@ qqnorm(mediasA)
 qqline(mediasA)#La cola del plot
 ```
 
-Se observa tanto en el histograma hay una asimetria a la derecha.
-En el Q-Q plot se observa una simetria de las colas livianas.
-En el boxplot se observa que tiene la cola superior pesada, ademas de los visibles outliers.
+Observamos que tanto el histograma, como en el boxplot y q-q plot, los gráficos son asimétricos, lo que es consistente con una distribución exponencial como esta.
 
 ##b)
 ```{r, eval=TRUE, echo=FALSE}
@@ -100,23 +99,22 @@ a <- c(rexp(1, rate = 3), rexp(1, rate = 3), rexp(1, rate = 3), rexp(1, rate = 3
 mediasB[i] = mean(a)
 }
 ```
-Histograma
+
 ```{r, eval=TRUE, echo=TRUE}
 hist(mediasB)
 ```
-Boxplot
+
 ```{r, eval=TRUE, echo=TRUE}
 boxplot(mediasB)
 ```
-Q-Q Plot
+
 ```{r, eval=TRUE, echo=TRUE}
 qqnorm(mediasB)
-qqline(mediasB)#La cola del plot
+qqline(mediasB)
 ```
 
-Se observa que el histograma empieza a tender a una distribucion normal
-El boxplot hace notar mas las colas pesadas
-y el Q-Q plot sigue manteniedo la correcta simetria, lo cual tiene a una normal.
+Se observa que el histograma empieza a tender a una distribucion normal.
+En el boxplot pudimos notar colas más pesadas,y por último el Q-Q plot sigue manteniedo una cierta simetría, lo que hace que se vaya pareciendo a una distribución Normal.
 
 ##c)
 ```{r, eval=TRUE, echo=FALSE}
@@ -133,44 +131,40 @@ for (j in 1:1000){
   mediasC2[j] = mean(b)
 }
 ```
-Histograma
+
+Con n = 30
 ```{r, eval=TRUE, echo=TRUE}
 hist(mediasC1)
-hist(mediasC2)
-```
-Boxplot
-```{r, eval=TRUE, echo=TRUE}
 boxplot(mediasC1)
-boxplot(mediasC2)
-```
-Q-Q Plot
-```{r, eval=TRUE, echo=TRUE}
 qqnorm(mediasC1)
-qqline(mediasC1)#La cola del plot
+qqline(mediasC1)
+```
 
+Con n = 500
+```{r, eval=TRUE, echo=TRUE}
+hist(mediasC2)
+boxplot(mediasC2)
 qqnorm(mediasC2)
 qqline(mediasC2)
 ```
+
 ##d)
-```{r, eval=TRUE, echo=FALSE}
-c <- rnorm(1000, 0, 1)
-```
+Acá tenemos los gráficos de una Normal(0,1) a modo de comparación con los gráficos anteriores, y notamos que como se cumple la Ley de los Grandes Números, al ver que a medida que aumentamos el "n" se van pareciendo más a una distrubución normal.
+
+Si aumentaramos todavía más el n, los gráficos serían aún más parecidos a los de una normal.
+Algo parecido pudimos observar en los boxplots, que en los primeros tres gráficos no se notaba tanto una forma normal, pero con un n más grande también lo empezamos a notar y ahora podemos decír que el boxplot se parece a una normal.
+
 ```{r, eval=TRUE, echo=TRUE}
+c <- rnorm(1000, 0, 1)
 hist(c)
 boxplot(c)
 qqnorm(c)
 qqline(c)
 ```
 
-Acá tenemos los gráficos de una Normal(0,1), y notamos que se cumple la Ley de los Grandes Números al ver que a medida que aumentamos el n se van pareciendo más a este gráfico. Si aumentaramos todavía más el n, los gráficos serían más parecidos aún al de la Normal.
-Se nota con muchas mas fuerza en el histograma la distribucion normal.
-Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia tender a la normal. Ahora con una gran seguridad podemos confirmar que tiene a una normal con muy pocos outliers.
-Y el Q-Qplot se aferra con mucha mas fuerza a una distribucion normal.
-
 ##e)
-Boxplot
 ```{r, eval=TRUE, echo=TRUE}
-boxplot(mediasA,mediasB,mediasC1,mediasC2,c)
+boxplot(mediasA,mediasB,mediasC1,mediasC2)
 ```
 
 Obsevamos que con mayor muestra se puede verificar su tendencia a una distribucion normal.
@@ -181,7 +175,7 @@ Dado que en el punto a, presuponia que poseia colas pesadas, tendiendo a la cola
 
 ##a)
 Estamos suponiendo que se refiere a la esperanza y varianza muestral.
-```{r, eval=TRUE, echo=TRUE}
+```{r, eval=TRUE, echo=FALSE}
 mediaX1 <- mean(mediasA)
 varX1 <- var(mediasA)
 
@@ -197,65 +191,56 @@ varX4 <- var(mediasC2)
 ```
 
 ```{r, eval=TRUE, echo=TRUE}
-#MediaX1
 mediaX1
-
-#varX1
 varX1
 
-#MediaX2
-mediaX2
 
-#varX2
+mediaX2
 varX2
 
 
-#MediaX3
 mediaX3
-
-#varX3
 varX3
 
 
-#MediaX4
 mediaX4
-
-#varX4
 varX4
-
 ```
 
 ##b)
+transformacionesA -> n = 2
+
+transformacionesB -> n = 5
+
+transformacionesC1 -> n = 30
+
+transformacionesC2 -> n = 500
+
 ```{r, eval=TRUE, echo=FALSE}
-#Transformación: (1/3 es la esperanza de la exp(3) )
+esperanzaExp <- 1/3
+varianzaExp <- 1/9
 transformacionesA <- seq(1000)
 for (i in 1:1000){
-transformacionesA[i] <- (mediasA[i] - (1/3))/(sqrt((1/9)/2))
+transformacionesA[i] <- (mediasA[i] - esperanzaExp)/sqrt(varianzaExp/2)
 }
-
 transformacionesB <- seq(1000)
 for (i in 1:1000){
-transformacionesB[i] <- (mediasB[i] - (1/3))/(sqrt((1/9)/5))
+transformacionesB[i] <- (mediasB[i] - esperanzaExp)/sqrt(varianzaExp/5)
 }
-
 transformacionesC1 <- seq(1000)
 for (i in 1:1000){
-transformacionesC1[i] <- (mediasC1[i] - (1/3))/(sqrt((1/9)/30))
+transformacionesC1[i] <- (mediasC1[i] - esperanzaExp)/sqrt(varianzaExp/30)
 }
-
 transformacionesC2 <- seq(1000)
 for (i in 1:1000){
-transformacionesC2[i] <- (mediasC2[i] - (1/3))/(sqrt((1/9)/500))
+transformacionesC2[i] <- (mediasC2[i] - esperanzaExp)/sqrt(varianzaExp/500)
 }
-
 ```
 
-Boxplot de las transformaciones, abajo los de las medias.
 ```{r, eval=TRUE, echo=TRUE}
 boxplot(transformacionesA, transformacionesB, transformacionesC1, transformacionesC2)
 ```
 
-Q-Q Plots. De las medias y después de las transformaciones.
 ```{r, eval=TRUE, echo=TRUE}
 qqnorm(transformacionesA)
 qqline(transformacionesA)
@@ -292,38 +277,44 @@ curve(dnorm(x, mean = 0, sd = 1), add = TRUE, col = "darkblue", lwd = 2)
 ```
 
 ##d)
-
-Con respecto a los histogramas,`mediasA`  `mediasB`, `mediasC1` y `mediasC2`, se puede observar como los graficos empiezan a represtan una "campana" al estilo de una normal, lo cual nos informa, que nuestra muestra fue lo suficientemente buena, para poder estimar dicha distribucion aleatoria.
-
+En los diferentes histográmas vemos aún con más claridad lo que explicamos en los incisos anteriores sobre como a medida que aumenta el "n", la tendencia de la transformación hacia una normal standard se hace más y más evidente.
 
 #Ejercicio 4
 
 ##Punto 1
-
-```{r, eval=TRUE, echo=FALSE}
+```{r, eval=TRUE, echo=FALSE} 
+#Podríamos haber hecho:
+# y <- rbinom(3000, 5, 1/9)
+# Pero como necesitaba el for para poner el set.seed adentro lo dejamos así para que queden iguales.
 y <- seq(length = 3000)
 for (i in 1:3000){
-  y[i] <- rbinom(5,size=i,prob=1/9) 
+  y[i] <- rbinom(1, 5, 1/9) 
 }
+
 z <- seq(length = 3000)
 for (j in 1:3000){
   set.seed(1109)
-  z[j] <- mean(rbinom(5,size=j,prob=1/9))
+  z[j] <- mean(rbinom(1, 5, 1/9))
 } 
 
 plot(y,col="blue")
 plot(z,col="red")
 ```
 
+Para este punto vale la misma explicación que para la exponencial, con la diferencia que en este caso se trata de una variable discreta.
+
+Debido a esto la diferencia en el gráfico es mucho más brusca, dado que en este caso tenemos un espacio de probabilidad finito y bastante acotado. 
+
+El primer gráfico se corresponde con una binomial de los parametros utilizados, y como al fijar set.seed() dentro de las funciones se repite el mismo experimento se explica que en ese caso el gráfico correspondiente a esa funciómn tenga esa forma de recta.
+
 ##Punto 2
 
 ###a)
-
 ```{r, eval=TRUE, echo=FALSE}
 #a)
 mediasA <- seq(length=1000)
 for (j in 1:1000){
-  x1 <- rbinom(2,size= 5, prob=1/9)
+  x1 <- rbinom(2,  5, prob=1/9)
   mediasA[j] <- mean(x1)
 }
 ```
@@ -344,7 +335,6 @@ En el Q-Q plot se observa una simetria de las colas livianas.
 Se observa que el boxplot tiende a una normal.
 
 ###b)
-
 ```{r, eval=TRUE, echo=FALSE}
 mediasB <- seq(length = 1000)
 
@@ -369,7 +359,6 @@ Se observa que el histograma simetria de las colas livianas es mas fuerte.
 El boxplot es una "perfecta" normal y el Q-Q plot sigue manteniedo la  simetria de las colas livianas.
 
 ###c)
-
 ```{r, eval=TRUE, echo=FALSE}
 mediasC1 <- seq(length = 1000) #Acá van con n=30
 mediasC2 <-seq(length = 1000) #Acá van con n=500
@@ -405,7 +394,6 @@ qqline(mediasC2)
 ```
 
 ###d)
-
 ```{r, eval=TRUE, echo=FALSE}
 c <- rnorm(1000, 0, 1)
 ```
@@ -426,7 +414,6 @@ Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia te
 Y el Q-Qplot se aferra con mucha mas fuerza a una distribucion normal.
 
 ###e)
-
 ```{r, eval=TRUE, echo=TRUE}
 boxplot(mediasA,mediasB,mediasC1,mediasC2,c)
 ```
@@ -438,7 +425,6 @@ Si aumentamos el n, el boxplot empieza a tener colas pesadas y deja de tender a 
 ##Punto 3
 
 ###a)
-
 ```{r, eval=TRUE, echo=FALSE}
 mediaX1 <- mean(mediasA)
 varX1 <- var(mediasA)
@@ -475,30 +461,29 @@ varX4
 ```
 
 ###b)
-
 ```{r, eval=TRUE, echo=FALSE}
+esperanzaBinom <- 5/9
+varianzaBinom <- 40/81
+
 transformacionesA <- seq(1000)
 for (i in 1:1000){
-  transformacionesA[i] <- (mediasA[i] - (5/9))/(sqrt((40/81)/2))
+  transformacionesA[i] <- (mediasA[i] - esperanzaBinom)/sqrt(varianzaBinom/2)
 }
 
 transformacionesB <- seq(1000)
 for (i in 1:1000){
-  transformacionesB[i] <- (mediasB[i] - (5/9))/sqrt((40/81)/5)
+  transformacionesB[i] <- (mediasB[i] - esperanzaBinom)/sqrt(varianzaBinom/5)
 }
-
 
 transformacionesC1 <- seq(1000)
 for (i in 1:1000){
-  transformacionesC1[i] <- (mediasC1[i] - (5/9))/sqrt((40/81)/30)
+  transformacionesC1[i] <- (mediasC1[i] - esperanzaBinom)/sqrt(varianzaBinom/30)
 }
-
 
 transformacionesC2 <- seq(1000)
 for (i in 1:1000){
-  transformacionesC2[i] <- (mediasC2[i] - (5/9))/sqrt((40/81)/500)
+  transformacionesC2[i] <- (mediasC2[i] - esperanzaBinom)/sqrt(varianzaBinom/500)
 }
-
 ```
 ```{r, eval=TRUE, echo=TRUE}
 boxplot(transformacionesA, transformacionesB, transformacionesC1, transformacionesC2)
@@ -517,20 +502,18 @@ qqline(transformacionesC2)
 ```
 
 ###c)
-
-
 ```{r, eval=TRUE, echo=FALSE}
-hist(transformacionesA, freq = FALSE)
+hist(transformacionesA, freq = FALSE, xlim = c(-3, 3))
 curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
 
 ```{r, eval=TRUE, echo=FALSE}
-hist(transformacionesB, freq = FALSE)
+hist(transformacionesB, freq = FALSE, xlim = c(-3, 3))
 curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
 
 ```{r, eval=TRUE, echo=FALSE}
-hist(transformacionesC1, freq = FALSE)
+hist(transformacionesC1, freq = FALSE, xlim = c(-3, 3))
 curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
 
