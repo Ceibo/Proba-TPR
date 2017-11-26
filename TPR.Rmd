@@ -8,8 +8,9 @@ output:
     toc: true # table of content true
     toc_depth: 3  # upto three depths of headings (specified by #, ## and ###)
 ---
-![Tendencia Probabilistica Revolucionaria](/home/sly/Desktop/tpr_logo_web2.png)
+![Tendencia Probabilistica Revolucionaria](/home/sly/Escritorio/tpr_logo_web2.png)
 
+\pagebreak
 
 Lo primero que vamos a hacer es fijar la semilla de forma global.
 ```{r, eval=TRUE, echo=TRUE}
@@ -63,6 +64,8 @@ También pudimos observar el cumplimiento de la Ley de los Grandes Números, al 
 
 Por lo que explicamos anteriormente sobre el uso de set.seed(), en el segundo gráfico se nota una tendencia muchísimo más marcada.
 
+\pagebreak
+
 #Ejercicio 2
 
 ##a)
@@ -90,6 +93,8 @@ qqline(mediasA)#La cola del plot
 
 Observamos que tanto el histograma, como en el boxplot y q-q plot, los gráficos son asimétricos, lo que es consistente con una distribución exponencial como esta.
 
+\pagebreak
+
 ##b)
 ```{r, eval=TRUE, echo=FALSE}
 mediasB <- seq(length = 1000)
@@ -115,6 +120,8 @@ qqline(mediasB)
 
 Se observa que el histograma empieza a tender a una distribucion normal.
 En el boxplot pudimos notar colas más pesadas,y por último el Q-Q plot sigue manteniedo una cierta simetría, lo que hace que se vaya pareciendo a una distribución Normal.
+
+\pagebreak
 
 ##c)
 ```{r, eval=TRUE, echo=FALSE}
@@ -147,12 +154,13 @@ boxplot(mediasC2)
 qqnorm(mediasC2)
 qqline(mediasC2)
 ```
+\pagebreak
 
 ##d)
-Acá tenemos los gráficos de una Normal(0,1) a modo de comparación con los gráficos anteriores, y notamos que como se cumple la Ley de los Grandes Números, al ver que a medida que aumentamos el "n" se van pareciendo más a una distrubución normal.
+Acá nos pareció oportuno adjuntar el gráfico de una distribución normal standard a modo de comparación con los gráficos anteriores, y pudimos notar el cumplimiento de la Ley de los Grandes Números, al ver que a medida que aumentamos el "n" se van pareciendo más a una distrubución normal.
 
-Si aumentaramos todavía más el n, los gráficos serían aún más parecidos a los de una normal.
-Algo parecido pudimos observar en los boxplots, que en los primeros tres gráficos no se notaba tanto una forma normal, pero con un n más grande también lo empezamos a notar y ahora podemos decír que el boxplot se parece a una normal.
+Si aumentaramos más el "n, los gráficos serían aún más parecidos a los de una normal.
+Algo similar pudimos observar en los boxplots, en los primeros tres gráficos no se notaba tanto una forma normal, pero con un "n" más grande también lo empezamos a notar y con n = 500 ya podemos decir con seguridad que el boxplot se parece a una normal.
 
 ```{r, eval=TRUE, echo=TRUE}
 c <- rnorm(1000, 0, 1)
@@ -161,15 +169,20 @@ boxplot(c)
 qqnorm(c)
 qqline(c)
 ```
+\pagebreak
 
 ##e)
 ```{r, eval=TRUE, echo=TRUE}
 boxplot(mediasA,mediasB,mediasC1,mediasC2)
 ```
 
-Obsevamos que con mayor muestra se puede verificar su tendencia a una distribucion normal.
-Dado que en el punto a, presuponia que poseia colas pesadas, tendiendo a la cola superior, con bastantes ouliers, siendo que cada vez que aumentabamos las muestras estos outleirs disminuian y las colas pesadas tendian a desaparecer y tender cada vez mas a la normal.
+Obsevamos que a mayor tamaño de la muestra, mayor es su tendencia a una distribucion normal.
 
+En el punto a) poseia colas pesadas, tendiendo a la cola superior y con un número mayor de ouliers. Luego  cada vez que aumentabamos el tamaño de nuestras muestras estos outleirs disminuían y se iban haciendo cada vez más simétricos los boxplots.
+
+En el gráfico no se pueden apreciar con mucho detalle los boxplots correspondientes a los "n" más grandes por la escala, sin embargo ya pudimos ver anteriormente como su forma se correspondía con la de una distribución normal.
+
+\pagebreak
 
 #Ejercicio 3
 
@@ -208,13 +221,13 @@ varX4
 ```
 
 ##b)
-transformacionesA -> n = 2
+transformacionesA - -->  n = 2
 
-transformacionesB -> n = 5
+transformacionesB  --->  n = 5
 
-transformacionesC1 -> n = 30
+transformacionesC1  --->  n = 30
 
-transformacionesC2 -> n = 500
+transformacionesC2  --->  n = 500
 
 ```{r, eval=TRUE, echo=FALSE}
 esperanzaExp <- 1/3
@@ -279,6 +292,8 @@ curve(dnorm(x, mean = 0, sd = 1), add = TRUE, col = "darkblue", lwd = 2)
 ##d)
 En los diferentes histográmas vemos aún con más claridad lo que explicamos en los incisos anteriores sobre como a medida que aumenta el "n", la tendencia de la transformación hacia una normal standard se hace más y más evidente.
 
+\pagebreak
+
 #Ejercicio 4
 
 ##Punto 1
@@ -302,10 +317,9 @@ plot(z,col="red")
 ```
 
 Para este punto vale la misma explicación que para la exponencial, con la diferencia que en este caso se trata de una variable discreta.
-
 Debido a esto la diferencia en el gráfico es mucho más brusca, dado que en este caso tenemos un espacio de probabilidad finito y bastante acotado. 
 
-El primer gráfico se corresponde con una binomial de los parametros utilizados, y como al fijar set.seed() dentro de las funciones se repite el mismo experimento se explica que en ese caso el gráfico correspondiente a esa funciómn tenga esa forma de recta.
+El primer gráfico se corresponde con una binomial de los parametros utilizados, y como al fijar set.seed() dentro de las funciones se repite el mismo experimento se explica que en ese caso el gráfico correspondiente a esa función tenga esa forma de recta.
 
 ##Punto 2
 
@@ -329,10 +343,7 @@ boxplot(mediasA)
 qqnorm(mediasA)
 qqline(mediasA)#La cola del plot
 ```
-
-Del histograma se obveserva simetria de las colas livianas.
-En el Q-Q plot se observa una simetria de las colas livianas.
-Se observa que el boxplot tiende a una normal.
+\pagebreak
 
 ###b)
 ```{r, eval=TRUE, echo=FALSE}
@@ -354,9 +365,7 @@ boxplot(mediasB)
 qqnorm(mediasB)
 qqline(mediasB)#La cola del plot
 ```
-
-Se observa que el histograma simetria de las colas livianas es mas fuerte.
-El boxplot es una "perfecta" normal y el Q-Q plot sigue manteniedo la  simetria de las colas livianas.
+\pagebreak
 
 ###c)
 ```{r, eval=TRUE, echo=FALSE}
@@ -394,33 +403,21 @@ qqline(mediasC2)
 ```
 
 ###d)
-```{r, eval=TRUE, echo=FALSE}
-c <- rnorm(1000, 0, 1)
-```
+En el primer punto vemos gráficos que se correponden con una binomial. Al ser una distribución discreta se explica que el Q-Q Plot tenga esa forma escalonada.
 
-```{r, eval=TRUE, echo=TRUE}
-hist(c)
-```
-```{r, eval=TRUE, echo=TRUE}
-boxplot(c)
-```
-```{r, eval=TRUE, echo=TRUE}
-qqnorm(c)
-qqline(c)
-```
 
-Se nota con muchas mas fuerza en el histograma la distribucion normal.
-Lo mismo con el boxplot, el cual era el unico hasta el momento que no parecia tender a la normal. Ahora con una gran seguridad podemos confirmar que tiene a una normal con muy pocos outliers.
-Y el Q-Qplot se aferra con mucha mas fuerza a una distribucion normal.
+Con n = 5 el histograma va adquiriendo una ligera forma de normal, el cambio más notable lo vemos en el boxplot que tiene pocos outliers y brazos relativamente simétricos.
+
+
+Ahora en los casos de n = 30 podemos ver como todos los gráficos van pareciendose más al de una normal, y más aún cuando n = 500, los gráficos inexorablemente tienen la forma de una distribución normal, la mayor diferencia antes la notabamos en el Q-Q Plot, pero con una muestra de este tamaño ya no queda ninguna duda.
+\pagebreak
 
 ###e)
 ```{r, eval=TRUE, echo=TRUE}
-boxplot(mediasA,mediasB,mediasC1,mediasC2,c)
+boxplot(mediasA,mediasB,mediasC1,mediasC2)
 ```
 
-Obsevamos que con una menor muestra se puede verificar su tendencia a una distribucion normal.
-Si aumentamos el n, el boxplot empieza a tener colas pesadas y deja de tender a una normal.
-
+Vemos que pasa algo similar a lo que observamos cuando hicimos este mismo experimento con una exponencial, tal vez la mayor diferencia sea que con n = 5 acá ya podemos notar el patrón de una distribución normal. 
 
 ##Punto 3
 
@@ -521,9 +518,8 @@ curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 hist(transformacionesC2, freq = FALSE)
 curve(dnorm(x, mean=0, sd=1), add=TRUE, col="darkblue", lwd=2)
 ```
+\pagebreak
 
-Se observa en el histograma `mediasA` y en `mediasB`, poseen una asimetria a la derecha, dado a que la muestra parece no ser lo suficientemente grande, lo cual no nos da informacion respecto a si tiende a una normal.
-
-En los últimos gráficos notamos que a medida que el n se va agrandando, se va pareciendo más a una normal, sin embargo no se parece tanto como creemos que tendría que pasar, ya que no aproxima a una normal standard.
-
-Creemos que esto se debe a algún error en nuestro código al momento de hacer la transformación o al usar la función rbinom.
+###d)
+Observamos lo mismo que al llevar a cabo este ejercicio con la exponencial.
+Anteriormente vimos como la binomial tendía a una normal por la Ley de los Grandes Números, y ahora vimos como gracias a las propiedades de la distribución normal pudimos aplicar esta transformación y obtener algo que tiende aproximadamente a una distribución normal standard.
