@@ -52,11 +52,27 @@ x <- rnorm(100, 0, 1)
 eps <- rnorm(100, 0, 0.25)
 
 #c)
-y = -1 + 0.5*x + eps
+Y = -1 + 0.5*x + eps
 #Acá B0 = -1 y B1 = 0,5
 
 #d)
 plot(x, y)
-ej3lm <- lm(x ~ y)
+
+ej3lm <- lm(y ~ x)
 summary(ej3lm)
-#Entonces B0 = 1,50397 y B1 = 1,53364
+#Entonces B0 = -0,99650 y B1 = 0,55036
+
+abline(-1, 0.5, col = "violet")
+abline(-0.99650, 0.55036, col = 'green')
+
+#g) Y = V (−1+0.5x+ε)+(1−V )W, 
+#eps es el mismo del anterior, así que no hago nada.
+V <- rbinom(100, 1, 9/10)
+W <- rnorm(100, 50, 1)
+y1 = -1 + 0.5*x + eps
+y2 = 1 - V
+Y = V*y1 + W*y2
+#Ni idea como hacer el gráfico este
+plot(V*y1, W*y2)
+
+
